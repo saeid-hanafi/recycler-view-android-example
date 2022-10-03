@@ -1,5 +1,6 @@
 package com.example.contactlist;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder> {
+    private static final String TAG = "ContactAdapter";
     private String[] contacts = new String[10];
 
     public ContactAdapter() {
@@ -28,11 +30,13 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     @Override
     public ContactViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contact, parent, false);
+        Log.i(TAG, "onCreateViewHolder: ");
         return new ContactViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
+        Log.i(TAG, "onBindViewHolder: position => " + position);
         holder.BindContact(contacts[position]);
     }
 
