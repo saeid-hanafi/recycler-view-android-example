@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -58,6 +59,12 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         public void BindContact(String fullName) {
             this.fullName.setText(fullName);
             first_char.setText(fullName.substring(0, 1));
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), fullName, Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }
