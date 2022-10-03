@@ -11,10 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="206dp"
-        tools:layout_editor_absoluteY="127dp" />
+        tools:layout_editor_absoluteY="127dp"
+        android:layout_marginBottom="60dp"/>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/fullname_insert_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -27,24 +28,24 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/insert_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@+id/rv_main" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/insert_btn"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:background="@drawable/add_btn_back"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
+        app:layout_constraintBottom_toBottomOf="@+id/fullname_insert_text"
         app:layout_constraintEnd_toStartOf="@+id/rv_main"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText"
+        app:layout_constraintStart_toEndOf="@+id/fullname_insert_text"
+        app:layout_constraintTop_toTopOf="@+id/fullname_insert_text"
         app:srcCompat="@drawable/ic_baseline_add_24" />
 
     <androidx.constraintlayout.widget.Guideline

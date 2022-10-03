@@ -10,21 +10,28 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder> {
     private static final String TAG = "ContactAdapter";
-    private String[] contacts = new String[10];
+    private ArrayList<String> contacts = new ArrayList<>();
 
     public ContactAdapter() {
-        contacts[0] = "Saeed Hanafi";
-        contacts[1] = "Ali Ahmadi";
-        contacts[2] = "Roz Hanafi";
-        contacts[3] = "Ali Asghari";
-        contacts[4] = "Modammad Hanafi";
-        contacts[5] = "Jamshid Musavi";
-        contacts[6] = "Matin Mohammadi";
-        contacts[7] = "Saman Ahmadi";
-        contacts[8] = "Ali Samani";
-        contacts[9] = "Saeed Alizadeh";
+        contacts.add("Saeed Hanafi");
+        contacts.add("Ali Ahmadi");
+        contacts.add("Roz Hanafi");
+        contacts.add("Ali Asghari");
+        contacts.add("Modammad Hanafi");
+        contacts.add("Jamshid Musavi");
+        contacts.add("Matin Mohammadi");
+        contacts.add("Saman Ahmadi");
+        contacts.add("Ali Samani");
+        contacts.add("Saeed Alizadeh");
+    }
+
+    public void insertContact(String fullName) {
+        contacts.add(0, fullName);
+        notifyItemInserted(0);
     }
 
     @NonNull
@@ -38,12 +45,12 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
         Log.i(TAG, "onBindViewHolder: position => " + position);
-        holder.BindContact(contacts[position]);
+        holder.BindContact(contacts.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return contacts.length;
+        return contacts.size();
     }
 
     public class ContactViewHolder extends RecyclerView.ViewHolder {
