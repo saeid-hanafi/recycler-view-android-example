@@ -1,6 +1,8 @@
 package com.example.contactlist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -14,10 +16,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView imageView = findViewById(R.id.imageView);
-        Picasso.get().load("https://www.yasertebat.com/public/images/banners/assemble-3.jpg")
-                .placeholder(R.drawable.wallpaper)
-                .error(R.drawable.ic_launcher_background)
-                .into(imageView);
+        RecyclerView recyclerView = findViewById(R.id.rv_main);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        recyclerView.setAdapter(new ContactAdapter());
     }
 }
