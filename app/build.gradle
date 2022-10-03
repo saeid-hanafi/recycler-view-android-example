@@ -10,6 +10,7 @@ android {
         applicationId "com.example.contactlist"
         minSdk 22
         targetSdk 32
+        vectorDrawables.useSupportLibrary = true
         versionCode 1
         versionName "1.0"
 
