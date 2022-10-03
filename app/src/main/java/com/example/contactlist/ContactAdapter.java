@@ -15,8 +15,9 @@ import java.util.ArrayList;
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder> {
     private static final String TAG = "ContactAdapter";
     private ArrayList<String> contacts = new ArrayList<>();
-
-    public ContactAdapter() {
+    private OnChangeItem onChangeItem;
+    public ContactAdapter(OnChangeItem onChangeItem) {
+        this.onChangeItem = onChangeItem;
         contacts.add("Saeed Hanafi");
         contacts.add("Ali Ahmadi");
         contacts.add("Roz Hanafi");
@@ -32,6 +33,16 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     public void insertContact(String fullName) {
         contacts.add(0, fullName);
         notifyItemInserted(0);
+    }
+
+    public void removeContact(int position) {
+        contacts.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void editContact(String fullName, int position) {
+        contacts.set(position, fullName);
+        notifyItemChanged(position);
     }
 
     @NonNull
@@ -69,9 +80,21 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), fullName, Toast.LENGTH_SHORT).show();
+                    onChangeItem.onClickItem(fullName, getBindingAdapterPosition());
+                }
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    removeContact(getBindingAdapterPosition());
+                    return false;
                 }
             });
         }
+    }
+
+    public interface OnChangeItem {
+        void onClickItem(String fullName, int position);
     }
 }

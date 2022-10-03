@@ -24,7 +24,7 @@
         android:background="@drawable/edit_text_shape"
         android:elevation="5dp"
         android:hint="Enter Contact Full Name..."
-        android:padding="5dp"
+        android:padding="12dp"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
